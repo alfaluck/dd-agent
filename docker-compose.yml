@@ -1,5 +1,12 @@
 version: '2'
 services:
+#  statsd:
+#    image: datadog/docker-dd-agent:latest-dogstatsd
+#    container_name: emf_statsd
+#    environment:
+#      - API_KEY=a0427b07dcd9b66d474ad4d158ca3d4a
+#    networks:
+#      - emf_net
   dd-agent:
     build:
       context: .

@@ -1,0 +1,22 @@
+version: '2'
+services:
+  dd-agent:
+    build:
+      context: .
+    image: alfaluck/dd-agent:latest
+    container_name: emf_dd_agent
+    environment:
+      - DD_API_KEY=a0427b07dcd9b66d474ad4d158ca3d4a
+      - DD_TAGS=message-queue,agent-number:000
+#      - EC2_TAGS=yes
+    hostname: ddagent000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+    networks:
+      - emf_net
+networks:
+  emf_net:
+    external:
+      name: docker_emf_net
